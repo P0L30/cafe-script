@@ -1,70 +1,112 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+"use client";
+import { Link } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import {
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
+import { useFonts } from "expo-font";
 
 export default function HomeScreen() {
+  const [fontsLoaded] = useFonts({
+    Playwrite: require("@/assets/fonts/Playwrite.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
+    <View style={styles.body}>
+      <StatusBar style="light" />
+      <View style={styles.imagebox}>
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+          source={require("@/assets/images/starter.png")}
+          style={styles.background}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+        <Image
+          source={require("@/assets/images/logo.png")}
+          style={styles.logo}
+        />
+      </View>
+      <View style={styles.namebox}>
+        <Text style={styles.name}>Cafe script</Text>
+      </View>
+      <View style={styles.buttonBox}>
+        <TouchableOpacity style={styles.button}>
+          <Link href="./explore" style={styles.button1}>
+            <View style={styles.button1}>
+              <Text style={styles.buttonText}>Get Started</Text>
+            </View>
+          </Link>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  namebox: {
+    position: "absolute",
+    top: 370,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  name: {
+    fontFamily: "Playwrite",
+    color: "#CE9760",
+    fontSize: 40,
+    fontWeight: "500",
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  imagebox: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  logo: {
+    position: "absolute",
+    width: 170,
+    height: 110,
+    top: 250,
+    right: 135,
+    opacity: 0.9,
+  },
+  buttonBox: {
+    position: "absolute",
+    bottom: 50,
+  },
+  body: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "black",
+    color: "white",
+  },
+  button: {
+    width: 242,
+    height: 53,
+    borderRadius: 10,
+    backgroundColor: "#CE9760",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  button1: {
+    width: 242,
+    height: 53,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  buttonText: {
+    fontWeight: "700",
+    fontSize: 20,
+    color: "#543A20",
+  },
+  background: {
+    width: 420,
+    height: "100%",
+    opacity: 0.4,
   },
 });
