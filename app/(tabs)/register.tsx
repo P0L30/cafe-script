@@ -1,5 +1,5 @@
 "use client";
-import { Link, useSegments } from "expo-router";
+import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import {
   View,
@@ -21,8 +21,6 @@ export default function HomeScreen() {
   if (!fontsLoaded) {
     return null;
   }
-
-  const [homepage] = useSegments();
 
   return (
     <View style={styles.body}>
