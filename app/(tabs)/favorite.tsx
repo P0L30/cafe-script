@@ -9,10 +9,11 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  TextInput,
 } from "react-native";
 import { useFonts } from "expo-font";
 
-export default function HomeScreen() {
+export default function Favorite() {
   const [fontsLoaded] = useFonts({
     Playwrite: require("@/assets/fonts/Playwrite.ttf"),
   });
@@ -42,35 +43,15 @@ export default function HomeScreen() {
     <View style={styles.body}>
       <StatusBar style="light" />
       <View style={styles.header}>
-      <Image
-          source={require("@/assets/images/logo.png")} style={styles.profile}
-        />
-        <View>
-          <Text style={styles.username}>Poleo</Text>
-          <Text style={styles.speech}>Good Morning!</Text>
-        </View>
-        <View style={styles.iconBox}>
-        <Icon name="search" style={styles.headerIcon}/>
+        <Link href="./home">
+          <Icon name="chevron-left" style={styles.backButton}/>
+        </Link>
+        <Text style={styles.speech}>Favorite</Text>
         <Icon name="bell" style={styles.headerIcon}/>
-        </View>
       </View>
-      <View style={styles.discount}>
-        <View style={styles.disbox}>
-          <Text style={styles.dis}>Get 20% Discount On your First Order!</Text>
-          <Text style={styles.discountInfo}>Lorem ipsum dolor sit amet consectetur. Vestibulum eget blandit mattis </Text>
-        </View>
-        <Image
-          source={require("@/assets/images/logo.png")} style={styles.disImg}
-        />
-      </View>
-      <View style={styles.category}>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.category1}>
-      {cafeProductList.map((product) => (
-        <TouchableOpacity key={product.id} style={styles.categoryBT}>
-          <Text style={styles.categoryItems}>{product.attributes.name}</Text>
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
+      <View style={styles.inputBox}>
+        <TextInput style={styles.input} placeholder="Search For Your Favorite Product" />
+        <TouchableOpacity style={styles.Apply}><Icon name="search" style={styles.search}/></TouchableOpacity>
       </View>
       <View style={styles.productBox}>
       {cafeProductCardList.map((product) => (
@@ -89,22 +70,22 @@ export default function HomeScreen() {
               ))}
       </View>
       <View style={styles.tabBar}>
-      <TouchableOpacity style={styles.tab}>
+      <TouchableOpacity>
           <Link href="./home">
             <Icon name="home" style={styles.tabBarIcon}/>
           </Link>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.tab}>
+        <TouchableOpacity>
           <Link href="./order">
             <Icon name="shopping-cart" style={styles.tabBarIcon}/>
           </Link>
         </TouchableOpacity>
         <TouchableOpacity style={styles.tab}>
           <Link href="/favorite">
-            <Icon name="heart" style={styles.tabBarIcon}/>
+            <Icon name="heart" style={styles.tabBarIcon1}/>
           </Link>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.tab}>
+        <TouchableOpacity>
           <Link href="./profile">
             <Icon name="user" style={styles.tabBarIcon}/>
           </Link>
@@ -115,6 +96,51 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  tabBarIcon: {
+    color: "black",
+    fontSize: 25
+  },
+  tabBarIcon1: {
+    color: "white",
+    fontSize: 25
+  },
+  search: {
+  color: "#543A20",
+  fontSize: 25
+  },
+inputBox: {
+  width: "100%",
+  height: "6%",
+  display: "flex",
+  flexDirection: "row",
+  position: "absolute",
+  top: "11%",
+  paddingHorizontal: "5%"
+},
+Apply: {
+  backgroundColor: "#CE9760",
+  width: "20%",
+  height: "100%",
+  borderTopRightRadius: 10,
+  borderBottomRightRadius: 10,
+  justifyContent: 'center',
+  alignItems: 'center',
+},
+input: {
+  color: "#543A20",
+  width: "80%",
+  height: "100%",
+  borderColor: "#CE9760",
+  borderWidth: 1,
+  padding: 10,
+  borderTopLeftRadius: 10,
+  borderBottomLeftRadius: 10,
+  backgroundColor: "white"
+  },
+  backButton :{
+    color: "#CE9760",
+    fontSize: 30,
+  },
   tab: {
     backgroundColor: "#543A20",
     width: 60,
@@ -122,10 +148,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 50
-  },
-  tabBarIcon: {
-    color: "black",
-    fontSize: 35
   },
   tabBar: {
     width: "100%",
@@ -169,7 +191,7 @@ const styles = StyleSheet.create({
     width: "90%",
     height: "50%",
     position: "absolute",
-    bottom: "10%",
+    top: "20%",
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -186,80 +208,14 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     marginBottom: "5%",
   },
-  categoryBT: {
-    marginLeft: 10
-  },
-  categoryItems: {
-    color: "white",
-    fontSize: 20,
-    fontWeight: "500"
-  },
-  category1: {
-    position: "absolute",
-    width: "100%",
-    top: "42%"
-  },
-  category: {
-    position: "absolute",
-    width: "90%",
-    top: "35%"
-  },
-  discountInfo: {
-    fontWeight: "400",
-    fontSize: 12,
-    color: "white"
-  },
-  dis: {
-    fontWeight: "600",
-    fontSize: 20,
-    color: "white"
-  },
-  disbox: {
-    width: "50%",
-    height: "90%",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    gap: 10
-  },
-  disImg: {
-    width: "40%",
-    height: "90%",
-  },
-  discount: {
-    backgroundColor: '#CE97607D',
-    width: "90%",
-    height: "18%",
-    borderRadius: 10,
-    position: "absolute",
-    top: "15%",
-    display: "flex",
-    flexDirection: "row",
-    paddingVertical: "4%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  iconBox: {
-    display: "flex",
-    flexDirection: "row",
-    gap: 20,
-    height: 65,
-    justifyContent: "center",
-    alignItems: "center",
-    marginLeft: 70
-  },
   headerIcon: {
     color: "white",
     fontSize: 30,
   },
   speech: {
-    fontWeight: "300",
-    fontSize: 18,
+    fontWeight: "700",
+    fontSize: 30,
     color: "white"
-  },
-  username: {
-    color: "white",
-    fontWeight: "600",
-    fontSize: 22
   },
   header: {
 width: "90%",
@@ -268,7 +224,9 @@ position: "absolute",
 top: "5%",
 display: "flex",
 flexDirection: "row",
+justifyContent: "space-between",
 gap: 15,
+alignItems: "center",
   },
  body: {
   width: "100%",
@@ -278,9 +236,4 @@ gap: 15,
   backgroundColor: "#543A20",
   color: "white",
  },
- profile: {
-  width: 65,
-  height: 65,
-  borderRadius: 40
- }
 });

@@ -91,20 +91,20 @@ export default function HomeScreen() {
       <View style={styles.tabBar}>
       <TouchableOpacity style={styles.tab}>
           <Link href="/home">
-            <Icon name="home" style={styles.tabBarIcon}/>
+            <Icon name="home" style={styles.tabBarIcon1}/>
           </Link>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.tab}>
+        <TouchableOpacity>
           <Link href="./order">
             <Icon name="shopping-cart" style={styles.tabBarIcon}/>
           </Link>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.tab}>
+        <TouchableOpacity>
           <Link href="./favorite">
             <Icon name="heart" style={styles.tabBarIcon}/>
           </Link>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.tab}>
+        <TouchableOpacity>
           <Link href="./profile">
             <Icon name="user" style={styles.tabBarIcon}/>
           </Link>
@@ -115,6 +115,14 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  tabBarIcon: {
+    color: "black",
+    fontSize: 25
+  },
+  tabBarIcon1: {
+    color: "white",
+    fontSize: 25
+  },
   tab: {
     backgroundColor: "#543A20",
     width: 60,
@@ -122,10 +130,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 50
-  },
-  tabBarIcon: {
-    color: "black",
-    fontSize: 35
   },
   tabBar: {
     width: "100%",
