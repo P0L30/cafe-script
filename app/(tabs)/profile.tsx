@@ -31,7 +31,9 @@ export default function HomeScreen() {
           <Icon name="chevron-left" style={styles.backButton}/>
         </Link>
         <Text style={styles.speech}>Profile</Text>
+        <Link href="./notification">
         <Icon name="bell" style={styles.headerIcon}/>
+        </Link>
       </View>
       <View style={styles.profileBox}>
       <Image
@@ -48,17 +50,15 @@ export default function HomeScreen() {
         </View>
         <Text style={styles.BoxName}>Your Profile</Text>  
           </View>
-          <Icon name="chevron-right" style={styles.backButton}/>
-        </TouchableOpacity>
+        </TouchableOpacity >
         <TouchableOpacity style={styles.listItem}>
-          <Link href='./myOrder'>
-          <View style={styles.smallbox}>
+        <Link href="./myOrder" style={styles.bt}>
+        <View style={styles.smallbox}>
           <View style={styles.iconboxList}>
-            <Icon name="list" style={styles.tabBarIcon1}/>
-        </View>
-        <Text style={styles.BoxName}>My Order</Text>  
+            <Icon name='list' style={styles.tabBarIcon1}/>
           </View>
-          <Icon name="chevron-right" style={styles.backButton}/>
+          <Text style={styles.BoxName}>My Order</Text>
+        </View>
           </Link>
         </TouchableOpacity>
         <TouchableOpacity style={styles.listItem}>
@@ -68,7 +68,6 @@ export default function HomeScreen() {
         </View>
         <Text style={styles.BoxName}>Privacy Policy</Text>  
           </View>
-          <Icon name="chevron-right" style={styles.backButton}/>
         </TouchableOpacity>
         <TouchableOpacity style={styles.listItem}>
           <View style={styles.smallbox}>
@@ -77,16 +76,13 @@ export default function HomeScreen() {
         </View>
         <Text style={styles.BoxName}>Invite Friend</Text>  
           </View>
-          <Icon name="chevron-right" style={styles.backButton}/>
         </TouchableOpacity>
         <TouchableOpacity style={styles.listItem1}>
           <View style={styles.smallbox}>
           <View style={styles.iconboxList}>
             <Icon1 name="log-out" style={styles.tabBarIcon1}/>
         </View>
-        <Text style={styles.BoxName}>Invite Friend</Text>  
           </View>
-          <Icon name="chevron-right" style={styles.backButton}/>
         </TouchableOpacity>
       </View>
       <View style={styles.tabBar}>
@@ -116,6 +112,14 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  bt: {
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    justifyContent: 'space-between',
+    alignItems: "center",
+    flexDirection: "row",
+  },
   listItem1: {
     width: "90%",
     height: "15%",

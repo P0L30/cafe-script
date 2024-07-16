@@ -51,7 +51,9 @@ export default function HomeScreen() {
         </View>
         <View style={styles.iconBox}>
         <Icon name="search" style={styles.headerIcon}/>
+        <Link href="./notification">
         <Icon name="bell" style={styles.headerIcon}/>
+        </Link>
         </View>
       </View>
       <View style={styles.discount}>

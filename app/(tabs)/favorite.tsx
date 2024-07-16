@@ -47,7 +47,9 @@ export default function Favorite() {
           <Icon name="chevron-left" style={styles.backButton}/>
         </Link>
         <Text style={styles.speech}>Favorite</Text>
+        <Link href="./notification">
         <Icon name="bell" style={styles.headerIcon}/>
+        </Link>
       </View>
       <View style={styles.inputBox}>
         <TextInput style={styles.input} placeholder="Search For Your Favorite Product" />

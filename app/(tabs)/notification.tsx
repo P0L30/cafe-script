@@ -42,40 +42,36 @@ const handleDecrement =() => {
     <View style={styles.body}>
       <StatusBar style="light" />
       <View style={styles.headerbox}>
-        <Text style={styles.headerText}>My Order</Text>
+        <Text style={styles.headerText}>Notification</Text>
       </View>
       <View style={styles.orderBox}>
         <ScrollView style={styles.scroll}>
         <View style={styles.item}>
             <View style={styles.imgBox}>
             <Image
-          source={require("@/assets/images/logo.png")} style={styles.productImg}
+          source={require("@/assets/images/logo.png")} style={styles.notificationImg}
         />
             </View>
         <View style={styles.infoBox}>
             <Text style={styles.productName}>adasdasdas</Text>
             <Text style={styles.productQty}>asdas</Text>
-            <Text style={styles.productPrice}>ada</Text>
-            <Text style={styles.orderStatus}>sdasdasda</Text>
         </View>
-        <View style={styles.orderLocationAndStatus}>
-          <Text style={styles.status}>Track</Text>
+        <View>
+          <Text style={styles.status}>1h</Text>
         </View>
         </View>
         <View style={styles.item}>
             <View style={styles.imgBox}>
             <Image
-          source={require("@/assets/images/logo.png")} style={styles.productImg}
+          source={require("@/assets/images/logo.png")} style={styles.notificationImg}
         />
             </View>
         <View style={styles.infoBox}>
             <Text style={styles.productName}>adasdasdas</Text>
             <Text style={styles.productQty}>asdas</Text>
-            <Text style={styles.productPrice}>ada</Text>
-            <Text style={styles.orderStatus}>sdasdasda</Text>
         </View>
-        <View style={styles.orderLocationAndStatus}>
-          <Text style={styles.status}>Track</Text>
+        <View>
+          <Text style={styles.status}>1h</Text>
         </View>
         </View>
         </ScrollView>
@@ -88,8 +84,10 @@ const styles = StyleSheet.create({
     imgBox: {
         width: 100,
         height: 100,
-        borderRadius: 10,
+        borderRadius: 50,
         backgroundColor: '#CE9760',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     status: {
         color: 'white',
@@ -144,9 +142,9 @@ const styles = StyleSheet.create({
         borderColor: '#CE9760',
         borderBottomWidth: 1
     },
-    productImg: {
-        width: 100,
-        height: 100,
+    notificationImg: {
+        width: 50,
+        height: 50,
     },
     orderBox: {
         width: "100%",
