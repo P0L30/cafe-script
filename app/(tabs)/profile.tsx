@@ -62,12 +62,14 @@ export default function HomeScreen() {
           </Link>
         </TouchableOpacity>
         <TouchableOpacity style={styles.listItem}>
+        <Link href="./privacy" style={styles.bt}>
           <View style={styles.smallbox}>
           <View style={styles.iconboxList}>
             <Icon name="lock" style={styles.tabBarIcon1}/>
         </View>
         <Text style={styles.BoxName}>Privacy Policy</Text>  
           </View>
+          </Link>
         </TouchableOpacity>
         <TouchableOpacity style={styles.listItem}>
           <View style={styles.smallbox}>
@@ -82,6 +84,7 @@ export default function HomeScreen() {
           <View style={styles.iconboxList}>
             <Icon1 name="log-out" style={styles.tabBarIcon1}/>
         </View>
+        <Text style={styles.BoxName}>Log Out</Text>
           </View>
         </TouchableOpacity>
       </View>

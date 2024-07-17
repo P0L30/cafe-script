@@ -120,11 +120,58 @@ const handleDecrement =() => {
           </Link>
         </TouchableOpacity>
       </View>
+      <TouchableOpacity style={styles.button2}>
+          <Link href="./checkout" style={styles.button1}>
+            <View style={styles.button1}>
+              <Text style={styles.buttonText}>Finalize Order</Text>
+            </View>
+          </Link>
+        </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  buttonText: {
+    fontWeight: "700",
+    fontSize: 20,
+    color: "white",
+  },
+  button1: {
+    width: 380,
+    height: 53,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  button2: {
+    width: "90%",
+    height: "6%",
+    borderRadius: 10,
+    borderColor: "#CE9760",
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
+    position: 'absolute',
+    bottom: "13%"
+  },
+  finalizeOrder: {
+    color: "white",
+    borderColor: "#CE9760",
+    width: "90%",
+    height: "6%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: 'center',
+    alignItems: "center",
+    fontFamily: 'sans-serif',
+    borderWidth: 1,
+    position: "absolute",
+    bottom: "12.5%",
+    borderRadius: 9,
+    fontSize: 18,
+    fontWeight: '600'
+  },
   typeBox: {
     gap: 10
   },

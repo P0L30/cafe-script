@@ -44,7 +44,7 @@ export default function HomeScreen() {
       </View>
       <View style={styles.buttonBox}>
         <TouchableOpacity style={styles.button}>
-          <Link href="./homepage" style={styles.button1}>
+          <Link href="./home" style={styles.button1}>
             <View style={styles.button1}>
               <Text style={styles.buttonText}>Sign In</Text>
             </View>

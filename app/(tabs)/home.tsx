@@ -107,7 +107,7 @@ export default function HomeScreen() {
           </Link>
         </TouchableOpacity>
         <TouchableOpacity>
-          <Link href="./profile">
+          <Link href="./profile" style={styles.tabBarIcon}>
             <Icon name="user" style={styles.tabBarIcon}/>
           </Link>
         </TouchableOpacity>
