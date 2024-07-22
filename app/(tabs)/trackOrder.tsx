@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-// import { LOgo } from "./image"
+// import { StatusImage } from '../../assets/images/statusImage'
 import {
   View,
   Image,
@@ -65,18 +65,54 @@ export default function HomeScreen() {
             <Text style={styles.timeText}>45 - 55 min</Text>
           </View>
         </View>
-        <View style={styles.statusBox}>
-          <View style={styles.statusText}>
-            <View style={styles.checkBox}>
-              <Text style={styles.check}>✓</Text>
+        <View style={styles.status}>
+          <View style={styles.statusBox}>
+            <View style={styles.statusText}>
+              <View style={styles.checkBox}>
+                <Text style={styles.check}>✓</Text>
+              </View>
+              <View style={styles.statusBoxText}>
+                <Text style={styles.statusTitle}>Order placed</Text>
+                <Text style={styles.statusInfo}>23 march, 2024, 04:36 PM</Text>
+              </View>
             </View>
-            <View style={styles.statusBoxText}>
-              <Text style={styles.statusText}>Order placed</Text>
-              <Text>23 march, 2024, 04:36 PM</Text>
+          </View>
+          <View style={styles.statusBox}>
+            <View style={styles.statusText}>
+              <View style={styles.checkBox}>
+                <Text style={styles.check}>✓</Text>
+              </View>
+              <View style={styles.statusBoxText}>
+                <Text style={styles.statusTitle}>In Progress</Text>
+                <Text style={styles.statusInfo}>23 march, 2024, 04:40 PM</Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.statusBox}>
+            <View style={styles.statusText}>
+              <View style={styles.checkBox}>
+                <Text style={styles.check}>✓</Text>
+              </View>
+              <View style={styles.statusBoxText}>
+                <Text style={styles.statusTitle}>On Your way</Text>
+                <Text style={styles.statusInfo}>23 march, 2024, 05:10 PM</Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.statusBox}>
+            <View style={styles.statusText}>
+              <View style={styles.checkBox}>
+                <Text style={styles.check}>✓</Text>
+              </View>
+              <View style={styles.statusBoxText}>
+                <Text style={styles.statusTitle}>Deliverd</Text>
+                <Text style={styles.statusInfo}>23 march, 2024, 05:20 PM</Text>
+              </View>
             </View>
           </View>
         </View>
       </View>
+      <View style={styles.line}></View>
       <TouchableOpacity style={styles.button2}>
         <Link href="./trackOrder" style={styles.button1}>
           <View style={styles.button1}>
@@ -89,14 +125,31 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  statusText: {
+  line: {
+    borderColor: "#CE9760",
+    borderWidth: 2,
+    height: "30%",
+    position: "absolute",
+    bottom: "10%",
+    left: "32.5%",
+    zIndex: 1,
+  },
+  status: {
+    gap: 40,
+  },
+  statusInfo: {
     color: "white",
-    fontSize: 20,
+    fontSize: 10,
+  },
+  statusTitle: {
+    color: "white",
+    fontSize: 18,
   },
   statusBoxText: {
     gap: 5,
+    display: "flex",
     justifyContent: "flex-start",
-    alignItems: "center",
+    alignItems: "flex-start",
   },
   statusBox: {
     width: "100%",
@@ -104,10 +157,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   timeBox: {
-    backgroundColor: "green",
     width: "90%",
     justifyContent: "center",
     alignItems: "center",
+    gap: 20,
+    position: "absolute",
+    bottom: "10%",
+    zIndex: 2,
   },
   check: {
     color: "#39260B",
