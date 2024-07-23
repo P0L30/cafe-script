@@ -65,7 +65,7 @@ export default function HomeScreen() {
         <View style={styles.addressBox}>
           <View style={styles.firstBox}>
             <View style={styles.iconBox}>
-              <Icon name="location" style={styles.icon} />
+              <Text style={styles.text}>+</Text>
             </View>
             <View>
               <Text style={styles.cardTitle}>Add Card</Text>
@@ -137,6 +137,11 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  text: {
+    color: "#39260B",
+    fontSize: 40,
+    marginBottom: "15%",
+  },
   cardText: {
     color: "white",
   },

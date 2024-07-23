@@ -28,85 +28,96 @@ export default function HomeScreen() {
       <StatusBar style="light" />
       <View style={styles.header}>
         <Link href="./home">
-          <Icon name="chevron-left" style={styles.backButton}/>
+          <Icon name="chevron-left" style={styles.backButton} />
         </Link>
         <Text style={styles.speech}>Profile</Text>
         <Link href="./notification">
-        <Icon name="bell" style={styles.headerIcon}/>
+          <Icon name="bell" style={styles.headerIcon} />
         </Link>
       </View>
       <View style={styles.profileBox}>
-      <Image
-          source={require("@/assets/images/starter.png")} style={styles.profile}
+        <Image
+          source={require("@/assets/images/starter.png")}
+          style={styles.profile}
         />
         <Text style={styles.username}>Shanzaib R.</Text>
-        <TouchableOpacity style={styles.editBox}><Icon name="pencil" style={styles.edit}/></TouchableOpacity>
+        <TouchableOpacity style={styles.editBox}>
+          <Icon name="pencil" style={styles.edit} />
+        </TouchableOpacity>
       </View>
       <View style={styles.listBox}>
         <TouchableOpacity style={styles.listItem}>
           <View style={styles.smallbox}>
-          <View style={styles.iconboxList}>
-            <Icon name="user" style={styles.tabBarIcon1}/>
-        </View>
-        <Text style={styles.BoxName}>Your Profile</Text>  
+            <View style={styles.iconboxList}>
+              <Icon name="user" style={styles.tabBarIcon1} />
+            </View>
+            <Text style={styles.BoxName}>Your Profile</Text>
           </View>
-        </TouchableOpacity >
+        </TouchableOpacity>
         <TouchableOpacity style={styles.listItem}>
-        <Link href="./myOrder" style={styles.bt}>
-        <View style={styles.smallbox}>
-          <View style={styles.iconboxList}>
-            <Icon name='list' style={styles.tabBarIcon1}/>
-          </View>
-          <Text style={styles.BoxName}>My Order</Text>
-        </View>
+          <Link href="./myOrder" style={styles.bt}>
+            <View style={styles.smallbox}>
+              <View style={styles.iconboxList}>
+                <Icon name="list" style={styles.tabBarIcon1} />
+              </View>
+              <Text style={styles.BoxName}>My Order</Text>
+            </View>
           </Link>
         </TouchableOpacity>
         <TouchableOpacity style={styles.listItem}>
-        <Link href="./privacy" style={styles.bt}>
-          <View style={styles.smallbox}>
-          <View style={styles.iconboxList}>
-            <Icon name="lock" style={styles.tabBarIcon1}/>
-        </View>
-        <Text style={styles.BoxName}>Privacy Policy</Text>  
-          </View>
+          <Link href="./privacy" style={styles.bt}>
+            <View style={styles.smallbox}>
+              <View style={styles.iconboxList}>
+                <Icon name="lock" style={styles.tabBarIcon1} />
+              </View>
+              <Text style={styles.BoxName}>Privacy Policy</Text>
+            </View>
           </Link>
         </TouchableOpacity>
         <TouchableOpacity style={styles.listItem}>
           <View style={styles.smallbox}>
-          <View style={styles.iconboxList}>
-            <Icon name="user-plus" style={styles.tabBarIcon1}/>
-        </View>
-        <Text style={styles.BoxName}>Invite Friend</Text>  
+            <View style={styles.iconboxList}>
+              <Icon name="user-plus" style={styles.tabBarIcon1} />
+            </View>
+            <Text style={styles.BoxName}>Invite Friend</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.listItem1}>
           <View style={styles.smallbox}>
-          <View style={styles.iconboxList}>
-            <Icon1 name="log-out" style={styles.tabBarIcon1}/>
-        </View>
-        <Text style={styles.BoxName}>Log Out</Text>
+            <View style={styles.iconboxList}>
+              <Icon1 name="log-out" style={styles.tabBarIcon1} />
+            </View>
+            <Text style={styles.BoxName}>Log Out</Text>
           </View>
         </TouchableOpacity>
       </View>
       <View style={styles.tabBar}>
-      <TouchableOpacity>
-          <Link href="./home">
-            <Icon name="home" style={styles.tabBarIcon}/>
+        <TouchableOpacity>
+          <Link href="./home" style={styles.tab1}>
+            <View style={styles.tab1}>
+              <Icon name="home" style={styles.tabBarIcon} />
+            </View>
           </Link>
         </TouchableOpacity>
         <TouchableOpacity>
-          <Link href="./order">
-            <Icon name="shopping-cart" style={styles.tabBarIcon}/>
+          <Link href="./order" style={styles.tab1}>
+            <View style={styles.tab1}>
+              <Icon name="shopping-cart" style={styles.tabBarIcon} />
+            </View>
           </Link>
         </TouchableOpacity>
         <TouchableOpacity>
-          <Link href="./favorite">
-            <Icon name="heart" style={styles.tabBarIcon}/>
+          <Link href="./favorite" style={styles.tab1}>
+            <View style={styles.tab1}>
+              <Icon name="heart" style={styles.tabBarIcon} />
+            </View>
           </Link>
         </TouchableOpacity>
         <TouchableOpacity style={styles.tab}>
-          <Link href="/profile">
-            <Icon name="user" style={styles.tabBarIcon1}/>
+          <Link href="/profile" style={styles.tab1}>
+            <View style={styles.tab1}>
+              <Icon name="user" style={styles.tabBarIcon1} />
+            </View>
           </Link>
         </TouchableOpacity>
       </View>
@@ -115,11 +126,17 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  tab1: {
+    width: 60,
+    height: 60,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   bt: {
     width: "100%",
     height: "100%",
     display: "flex",
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
   },
@@ -127,28 +144,28 @@ const styles = StyleSheet.create({
     width: "90%",
     height: "15%",
     display: "flex",
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
-    marginTop: "20%"
+    marginTop: "20%",
   },
   BoxName: {
-    color: 'white',
+    color: "white",
     fontSize: 20,
-    fontWeight: "500"
+    fontWeight: "500",
   },
   smallbox: {
-    justifyContent: 'center',
+    justifyContent: "center",
     alignItems: "center",
     display: "flex",
     flexDirection: "row",
-    gap: 20, 
+    gap: 20,
   },
   listItem: {
     width: "90%",
     height: "15%",
     display: "flex",
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
   },
@@ -159,14 +176,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "absolute",
     top: "35%",
-    gap: 10
+    gap: 10,
   },
   iconboxList: {
     backgroundColor: "#CE9760",
     borderRadius: 40,
     width: 60,
     height: 60,
-    justifyContent: 'center',
+    justifyContent: "center",
     alignItems: "center",
     display: "flex",
   },
@@ -182,10 +199,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     position: "absolute",
     top: "55%",
-    right: "39%"
+    right: "39%",
   },
   edit: {
-    color: 'white',
+    color: "white",
     fontSize: 15,
   },
   profileBox: {
@@ -194,11 +211,11 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    position: "absolute", 
+    position: "absolute",
     top: "10%",
-    gap: 10
+    gap: 10,
   },
-  backButton :{
+  backButton: {
     color: "#CE9760",
     fontSize: 30,
   },
@@ -206,17 +223,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#543A20",
     width: 60,
     height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 50
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 50,
   },
   tabBarIcon: {
     color: "black",
-    fontSize: 25
+    fontSize: 25,
   },
   tabBarIcon1: {
     color: "white",
-    fontSize: 25
+    fontSize: 25,
   },
   tabBar: {
     width: "100%",
@@ -224,10 +241,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#CE9760",
     position: "absolute",
     bottom: 0,
-    justifyContent: 'space-around',
-    alignItems :'center',
+    justifyContent: "space-around",
+    alignItems: "center",
     display: "flex",
-    flexDirection: 'row'
+    flexDirection: "row",
   },
   headerIcon: {
     color: "white",
@@ -235,36 +252,36 @@ const styles = StyleSheet.create({
   },
   speech: {
     fontWeight: "700",
-    fontSize: 30,
-    color: "white"
+    fontSize: 25,
+    color: "white",
   },
   username: {
     color: "white",
     fontWeight: "600",
-    fontSize: 22
+    fontSize: 22,
   },
   header: {
-width: "90%",
-height: "auto",
-position: "absolute",
-top: "5%",
-display: "flex",
-flexDirection: "row",
-justifyContent: "space-between",
-gap: 15,
-alignItems: "center",
+    width: "90%",
+    height: "auto",
+    position: "absolute",
+    top: "5%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: 15,
+    alignItems: "center",
   },
- body: {
-  width: "100%",
-  height: "100%",
-  justifyContent: "center",
-  alignItems: "center",
-  backgroundColor: "#543A20",
-  color: "white",
- },
- profile: {
-  width: 110,
-  height: 110,
-  borderRadius: 50
- }
+  body: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#543A20",
+    color: "white",
+  },
+  profile: {
+    width: 110,
+    height: 110,
+    borderRadius: 50,
+  },
 });
