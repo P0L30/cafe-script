@@ -87,8 +87,8 @@ export default function HomeScreen() {
       </View>
       <View style={styles.productBox}>
         {cafeProductCardList.map((product) => (
-          <Link href="./coffeeChoice">
-            <View style={styles.productCard}>
+          <View style={styles.productCard}>
+            <Link href="./coffeeChoice" style={styles.productCard1}>
               <Image
                 source={require("@/assets/images/logo.png")}
                 style={styles.productImg}
@@ -104,8 +104,8 @@ export default function HomeScreen() {
                 </View>
                 <Text>Lorem ipsum dolor sit amet cons </Text>
               </View>
-            </View>
-          </Link>
+            </Link>
+          </View>
         ))}
       </View>
       <View style={styles.tabBar}>
@@ -223,6 +223,12 @@ const styles = StyleSheet.create({
     padding: "3%",
     borderRadius: 7,
     marginBottom: "5%",
+  },
+  productCard1: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "flex-start",
+    alignItems: "center",
   },
   categoryBT: {
     marginLeft: 10,
