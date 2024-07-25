@@ -53,6 +53,11 @@ export default function HomeScreen() {
     .format("auto")
     .quality("auto")
     .resize(auto().gravity(autoGravity()));
+  const discount = cld
+    .image("discount")
+    .format("auto")
+    .quality("auto")
+    .resize(auto().gravity(autoGravity()));
 
   return (
     <View style={styles.body}>
@@ -78,7 +83,7 @@ export default function HomeScreen() {
             mattis{" "}
           </Text>
         </View>
-        <AdvancedImage cldImg={product} style={styles.disImg} />
+        <AdvancedImage cldImg={discount} style={styles.disImg} />
       </View>
       <View style={styles.category}>
         <ScrollView
@@ -282,7 +287,7 @@ const styles = StyleSheet.create({
   },
   disImg: {
     width: "40%",
-    height: "90%",
+    height: "100%",
   },
   discount: {
     backgroundColor: "#CE97607D",
