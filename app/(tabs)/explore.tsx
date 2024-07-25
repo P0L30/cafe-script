@@ -10,6 +10,11 @@ import {
   ScrollView,
 } from "react-native";
 import { useFonts } from "expo-font";
+import React from "react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { auto } from "@cloudinary/url-gen/actions/resize";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import { AdvancedImage } from "@cloudinary/react";
 
 export default function HomeScreen() {
   const [fontsLoaded] = useFonts({
@@ -20,15 +25,17 @@ export default function HomeScreen() {
     return null;
   }
 
+  const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
+  const img = cld
+    .image("background2")
+    .format("auto")
+    .quality("auto")
+    .resize(auto().gravity(autoGravity()));
+
   return (
     <View style={styles.body}>
       <StatusBar style="light" />
-      <View style={styles.imagebox}>
-        <Image
-          source={require("@/assets/images/background2.png")}
-          style={styles.background}
-        />
-      </View>
+      <AdvancedImage cldImg={img} style={styles.background} />
       <View style={styles.namebox}>
         <Text style={styles.name}>Embrace coffee</Text>
         <Text style={styles.name1}>essence</Text>
@@ -39,7 +46,7 @@ export default function HomeScreen() {
       <View style={styles.buttonBox}>
         <TouchableOpacity style={styles.button}>
           <Link href="./page3" style={styles.button1}>
-          <View style={styles.button1}>
+            <View style={styles.button1}>
               <Text style={styles.buttonText}>Next {">"}</Text>
             </View>
           </Link>
@@ -107,9 +114,9 @@ const styles = StyleSheet.create({
     color: "#543A20",
   },
   background: {
-    width: 420,
+    width: "120%",
     height: "100%",
-    opacity: 0.4,
+    opacity: 0.5,
   },
   button1: {
     width: 242,

@@ -11,6 +11,11 @@ import {
   ScrollView,
 } from "react-native";
 import { useFonts } from "expo-font";
+import React from "react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { auto } from "@cloudinary/url-gen/actions/resize";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import { AdvancedImage } from "@cloudinary/react";
 
 export default function HomeScreen() {
   const [fontsLoaded] = useFonts({
@@ -37,15 +42,18 @@ export default function HomeScreen() {
     { id: 3, attributes: { name: "Cappuccino", price: "5.95" } },
     { id: 4, attributes: { name: "Caffe Latte", price: "5.95" } },
   ];
+  const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
+  const img = cld
+    .image("starter")
+    .format("auto")
+    .quality("auto")
+    .resize(auto().gravity(autoGravity()));
 
   return (
     <View style={styles.body}>
       <StatusBar style="light" />
       <View style={styles.header}>
-        <Image
-          source={require("@/assets/images/logo.png")}
-          style={styles.profile}
-        />
+        <AdvancedImage cldImg={img} style={styles.profile} />
         <View>
           <Text style={styles.username}>Poleo</Text>
           <Text style={styles.speech}>Good Morning!</Text>

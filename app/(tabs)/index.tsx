@@ -1,15 +1,20 @@
 "use client";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import Icon from "react-native-vector-icons/Fontisto";
 import {
   View,
-  Image,
   Text,
   StyleSheet,
   TouchableOpacity,
   ScrollView,
 } from "react-native";
 import { useFonts } from "expo-font";
+import React from "react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { auto } from "@cloudinary/url-gen/actions/resize";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import { AdvancedImage } from "@cloudinary/react";
 
 export default function HomeScreen() {
   const [fontsLoaded] = useFonts({
@@ -20,19 +25,21 @@ export default function HomeScreen() {
     return null;
   }
 
+  // Initialize Cloudinary instance
+  const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
+
+  // Transform the image
+  const img = cld
+    .image("starter")
+    .format("auto")
+    .quality("auto")
+    .resize(auto().gravity(autoGravity()));
+
   return (
     <View style={styles.body}>
       <StatusBar style="light" />
-      <View style={styles.imagebox}>
-        <Image
-          source={require("@/assets/images/starter.png")}
-          style={styles.background}
-        />
-        <Image
-          source={require("@/assets/images/logo.png")}
-          style={styles.logo}
-        />
-      </View>
+      <AdvancedImage cldImg={img} style={styles.background} />
+      <Icon name="coffeescript" style={styles.logo} />
       <View style={styles.namebox}>
         <Text style={styles.name}>Cafe script</Text>
       </View>
@@ -66,11 +73,10 @@ const styles = StyleSheet.create({
   },
   logo: {
     position: "absolute",
-    width: 170,
-    height: 110,
-    top: "30%",
-    right: "32%",
-    opacity: 0.9,
+    top: "25%",
+    right: "33%",
+    color: "#CE9760",
+    fontSize: 120,
   },
   buttonBox: {
     position: "absolute",
@@ -105,7 +111,7 @@ const styles = StyleSheet.create({
     color: "#543A20",
   },
   background: {
-    width: 420,
+    width: "120%",
     height: "100%",
     opacity: 0.4,
   },

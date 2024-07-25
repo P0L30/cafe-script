@@ -12,6 +12,12 @@ import {
 } from "react-native";
 import { useFonts } from "expo-font";
 import Icon from "react-native-vector-icons/FontAwesome";
+import React from "react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { auto } from "@cloudinary/url-gen/actions/resize";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import { AdvancedImage } from "@cloudinary/react";
+import Icon1 from "react-native-vector-icons/Fontisto";
 
 export default function HomeScreen() {
   const [fontsLoaded] = useFonts({
@@ -21,20 +27,18 @@ export default function HomeScreen() {
   if (!fontsLoaded) {
     return null;
   }
+  const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
+  const img = cld
+    .image("background5")
+    .format("auto")
+    .quality("auto")
+    .resize(auto().gravity(autoGravity()));
 
   return (
     <View style={styles.body}>
       <StatusBar style="light" />
-      <View style={styles.imagebox}>
-        <Image
-          source={require("@/assets/images/background5.png")}
-          style={styles.background}
-        />
-        <Image
-          source={require("@/assets/images/logo.png")}
-          style={styles.logo}
-        />
-      </View>
+      <AdvancedImage cldImg={img} style={styles.background} />
+      <Icon1 name="coffeescript" style={styles.logo} />
       <View style={styles.namebox}>
         <Text style={styles.name}>Register your Account</Text>
       </View>
@@ -153,10 +157,10 @@ const styles = StyleSheet.create({
   },
   logo: {
     position: "absolute",
-    width: 110,
-    height: 80,
-    top: 100,
-    right: 160,
+    color: "#CE9760",
+    fontSize: 50,
+    top: "14%",
+    right: "43%",
     opacity: 0.9,
   },
   buttonBox: {
@@ -195,9 +199,9 @@ const styles = StyleSheet.create({
     color: "#543A20",
   },
   background: {
-    width: 420,
+    width: "100%",
     height: "100%",
-    opacity: 0.3,
+    opacity: 0.4,
   },
 });
 function UseSegment(): [any] {
