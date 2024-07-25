@@ -13,6 +13,11 @@ import {
   TextInput,
 } from "react-native";
 import { useFonts } from "expo-font";
+import React from "react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { auto } from "@cloudinary/url-gen/actions/resize";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import { AdvancedImage } from "@cloudinary/react";
 
 export default function HomeScreen() {
   const [count, setCount] = useState(0);
@@ -37,6 +42,12 @@ export default function HomeScreen() {
     { id: 3, attributes: { name: "Cappuccino", price: "5.95" } },
     { id: 4, attributes: { name: "Caffe Latte", price: "5.95" } },
   ];
+  const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
+  const img = cld
+    .image("latte")
+    .format("auto")
+    .quality("auto")
+    .resize(auto().gravity(autoGravity()));
 
   return (
     <View style={styles.body}>
@@ -86,10 +97,7 @@ export default function HomeScreen() {
         <ScrollView style={styles.scroll}>
           <View style={styles.item}>
             <View style={styles.imgBox}>
-              <Image
-                source={require("@/assets/images/logo.png")}
-                style={styles.productImg}
-              />
+              <AdvancedImage cldImg={img} style={styles.productImg} />
             </View>
             <View style={styles.infoBox}>
               <Text style={styles.productName}>Robusta</Text>
@@ -99,10 +107,7 @@ export default function HomeScreen() {
           </View>
           <View style={styles.item}>
             <View style={styles.imgBox}>
-              <Image
-                source={require("@/assets/images/logo.png")}
-                style={styles.productImg}
-              />
+              <AdvancedImage cldImg={img} style={styles.productImg} />
             </View>
             <View style={styles.infoBox}>
               <Text style={styles.productName}>Robusta</Text>
@@ -112,10 +117,7 @@ export default function HomeScreen() {
           </View>
           <View style={styles.item}>
             <View style={styles.imgBox}>
-              <Image
-                source={require("@/assets/images/logo.png")}
-                style={styles.productImg}
-              />
+              <AdvancedImage cldImg={img} style={styles.productImg} />
             </View>
             <View style={styles.infoBox}>
               <Text style={styles.productName}>Robusta</Text>

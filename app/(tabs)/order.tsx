@@ -291,17 +291,20 @@ const styles = StyleSheet.create({
   priceAndTypeBox: {
     display: "flex",
     flexDirection: "row",
+    justifyContent: "space-between",
+    width: "90%",
   },
   inputBox: {
     width: "100%",
-    height: "55%",
+    height: "25%",
     display: "flex",
     flexDirection: "row",
+    marginBottom: 20,
   },
   Apply: {
     backgroundColor: "#543A20",
     width: "30%",
-    height: "45%",
+    height: "100%",
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
     justifyContent: "center",
@@ -310,7 +313,7 @@ const styles = StyleSheet.create({
   input: {
     color: "#543A20",
     width: "70%",
-    height: "45%",
+    height: "100%",
     borderColor: "#39260B",
     borderWidth: 1,
     padding: 10,
@@ -328,6 +331,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     paddingBottom: 20,
+    gap: 40,
   },
   tab: {
     backgroundColor: "#543A20",

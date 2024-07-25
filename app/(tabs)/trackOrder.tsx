@@ -13,6 +13,11 @@ import {
   TextInput,
 } from "react-native";
 import { useFonts } from "expo-font";
+import React from "react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { auto } from "@cloudinary/url-gen/actions/resize";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import { AdvancedImage } from "@cloudinary/react";
 
 export default function HomeScreen() {
   const [count, setCount] = useState(0);
@@ -37,6 +42,12 @@ export default function HomeScreen() {
     { id: 3, attributes: { name: "Cappuccino", price: "5.95" } },
     { id: 4, attributes: { name: "Caffe Latte", price: "5.95" } },
   ];
+  const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
+  const img = cld
+    .image("checkoutimg")
+    .format("auto")
+    .quality("auto")
+    .resize(auto().gravity(autoGravity()));
 
   return (
     <View style={styles.body}>
@@ -44,6 +55,8 @@ export default function HomeScreen() {
       <View style={styles.headerbox}>
         <Text style={styles.headerText}>Track Order</Text>
       </View>
+      <AdvancedImage cldImg={img} style={styles.img} />
+      <View style={styles.style}></View>
       <View style={styles.timeBox}>
         <View style={styles.timeHeader}>
           <View style={styles.imgBox}>
@@ -125,6 +138,24 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  style: {
+    width: 100,
+    height: 100,
+    borderRadius: 200,
+    transform: [{ scaleX: 4 }],
+    backgroundColor: "#6B4E32",
+    position: "absolute",
+    top: "34%",
+    zIndex: 2,
+  },
+
+  img: {
+    width: "85%",
+    height: "37%",
+    position: "absolute",
+    top: "10%",
+    zIndex: 3,
+  },
   line: {
     borderColor: "#CE9760",
     borderWidth: 2,
