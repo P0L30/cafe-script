@@ -13,6 +13,11 @@ import {
   TextInput,
 } from "react-native";
 import { useFonts } from "expo-font";
+import React from "react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { auto } from "@cloudinary/url-gen/actions/resize";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import { AdvancedImage } from "@cloudinary/react";
 
 export default function HomeScreen() {
   const [fontsLoaded] = useFonts({
@@ -22,6 +27,13 @@ export default function HomeScreen() {
   if (!fontsLoaded) {
     return null;
   }
+
+  const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
+  const img = cld
+    .image("starter")
+    .format("auto")
+    .quality("auto")
+    .resize(auto().gravity(autoGravity()));
 
   return (
     <View style={styles.body}>
@@ -36,10 +48,7 @@ export default function HomeScreen() {
         </Link>
       </View>
       <View style={styles.profileBox}>
-        <Image
-          source={require("@/assets/images/starter.png")}
-          style={styles.profile}
-        />
+        <AdvancedImage cldImg={img} style={styles.profile} />
         <Text style={styles.username}>Bat-Od .E</Text>
         <TouchableOpacity style={styles.editBox}>
           <Icon name="pencil" style={styles.edit} />

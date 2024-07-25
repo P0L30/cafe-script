@@ -48,6 +48,11 @@ export default function HomeScreen() {
     .format("auto")
     .quality("auto")
     .resize(auto().gravity(autoGravity()));
+  const product = cld
+    .image("latte")
+    .format("auto")
+    .quality("auto")
+    .resize(auto().gravity(autoGravity()));
 
   return (
     <View style={styles.body}>
@@ -73,10 +78,7 @@ export default function HomeScreen() {
             mattis{" "}
           </Text>
         </View>
-        <Image
-          source={require("@/assets/images/logo.png")}
-          style={styles.disImg}
-        />
+        <AdvancedImage cldImg={product} style={styles.disImg} />
       </View>
       <View style={styles.category}>
         <ScrollView
@@ -97,8 +99,12 @@ export default function HomeScreen() {
         {cafeProductCardList.map((product) => (
           <View style={styles.productCard}>
             <Link href="./coffeeChoice" style={styles.productCard1}>
-              <Image
-                source={require("@/assets/images/logo.png")}
+              <AdvancedImage
+                cldImg={cld
+                  .image("latte")
+                  .format("auto")
+                  .quality("auto")
+                  .resize(auto().gravity(autoGravity()))}
                 style={styles.productImg}
               />
               <View style={styles.productInfoBox}>
@@ -210,6 +216,7 @@ const styles = StyleSheet.create({
   productImg: {
     width: 85,
     height: 79,
+    marginLeft: "25%",
   },
   productBox: {
     width: "90%",
@@ -226,7 +233,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#CE9760",
     width: "48%",
     height: "45%",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
     padding: "3%",
     borderRadius: 7,
@@ -235,7 +242,7 @@ const styles = StyleSheet.create({
   productCard1: {
     width: "100%",
     height: "100%",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
   },
   categoryBT: {

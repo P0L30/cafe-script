@@ -25,10 +25,7 @@ export default function HomeScreen() {
     return null;
   }
 
-  // Initialize Cloudinary instance
   const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
-
-  // Transform the image
   const img = cld
     .image("starter")
     .format("auto")

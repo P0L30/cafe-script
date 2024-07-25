@@ -14,6 +14,11 @@ import {
 import { useFonts } from "expo-font";
 import Slider from "@react-native-community/slider";
 import { useEffect } from "react";
+import React from "react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { auto } from "@cloudinary/url-gen/actions/resize";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import { AdvancedImage } from "@cloudinary/react";
 
 export default function HomeScreen() {
   const [fontsLoaded] = useFonts({
@@ -41,13 +46,17 @@ export default function HomeScreen() {
     { id: 4, attributes: { name: "Caffe Latte", price: "5.95" } },
   ];
 
+  const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
+  const img = cld
+    .image("starter")
+    .format("auto")
+    .quality("auto")
+    .resize(auto().gravity(autoGravity()));
+
   return (
     <View style={styles.body}>
       <StatusBar style="light" />
-      <Image
-        source={require("@/assets/images/starter.png")}
-        style={styles.background}
-      />
+      <AdvancedImage cldImg={img} style={styles.background} />
       <View style={styles.containerHeaderText}>
         <Link href="./home">
           <Icon1 name="chevron-left" style={styles.arrow} />

@@ -26,6 +26,11 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import FontAwesome5 from "@expo/vector-icons/Ionicons";
+import React from "react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { auto } from "@cloudinary/url-gen/actions/resize";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import { AdvancedImage } from "@cloudinary/react";
 
 const STRINGS_ARRAY = [
   "Robusta",
@@ -218,6 +223,12 @@ const FieldSwipe: React.FC<IFieldSwipe> = ({ title, onRemove }) => {
     height: itemHeight.value,
     marginVertical: marginVertical.value,
   }));
+  const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
+  const product = cld
+    .image("latte")
+    .format("auto")
+    .quality("auto")
+    .resize(auto().gravity(autoGravity()));
 
   return (
     <GestureDetector gesture={pan}>
@@ -226,10 +237,7 @@ const FieldSwipe: React.FC<IFieldSwipe> = ({ title, onRemove }) => {
           <FontAwesome5 name="trash" size={25} color="white" />
         </Animated.View>
         <Animated.View style={[styles.fieldContainer, transformStyle]}>
-          <Image
-            source={require("@/assets/images/logo.png")}
-            style={styles.itemIMG}
-          />
+          <AdvancedImage cldImg={product} style={styles.itemIMG} />
           <View style={styles.itemInfo}>
             <Text style={styles.text}>{title.str}</Text>
             <Text>With Milk</Text>

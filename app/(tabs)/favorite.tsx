@@ -12,6 +12,11 @@ import {
   TextInput,
 } from "react-native";
 import { useFonts } from "expo-font";
+import React from "react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { auto } from "@cloudinary/url-gen/actions/resize";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import { AdvancedImage } from "@cloudinary/react";
 
 export default function Favorite() {
   const [fontsLoaded] = useFonts({
@@ -21,6 +26,12 @@ export default function Favorite() {
   if (!fontsLoaded) {
     return null;
   }
+  const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
+  const img = cld
+    .image("latte")
+    .format("auto")
+    .quality("auto")
+    .resize(auto().gravity(autoGravity()));
 
   const cafeProductList = [
     { id: 1, attributes: { name: "Coffee" } },
@@ -63,10 +74,7 @@ export default function Favorite() {
       <View style={styles.productBox}>
         {cafeProductCardList.map((product) => (
           <View style={styles.productCard}>
-            <Image
-              source={require("@/assets/images/logo.png")}
-              style={styles.productImg}
-            />
+            <AdvancedImage cldImg={img} style={styles.productImg} />
             <View style={styles.productInfoBox}>
               <View style={styles.productNameAndPrice}>
                 <Text style={styles.productName}>

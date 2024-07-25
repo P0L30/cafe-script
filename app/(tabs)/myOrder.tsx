@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react'
+import { useState } from "react";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -13,15 +13,20 @@ import {
   TextInput,
 } from "react-native";
 import { useFonts } from "expo-font";
+import React from "react";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { auto } from "@cloudinary/url-gen/actions/resize";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
+import { AdvancedImage } from "@cloudinary/react";
 
 export default function HomeScreen() {
-const [ count ,setCount ] = useState(0);
-const handleIncrement = () => {
-  setCount(count + 1);
-};
-const handleDecrement =() => {
-  setCount(count - 1);
-};
+  const [count, setCount] = useState(0);
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+  const handleDecrement = () => {
+    setCount(count - 1);
+  };
 
   const [fontsLoaded] = useFonts({
     Playwrite: require("@/assets/fonts/Playwrite.ttf"),
@@ -30,12 +35,18 @@ const handleDecrement =() => {
   if (!fontsLoaded) {
     return null;
   }
+  const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
+  const img = cld
+    .image("latte")
+    .format("auto")
+    .quality("auto")
+    .resize(auto().gravity(autoGravity()));
 
   const cafeProductCardList = [
-    { id: 1, attributes: { name: 'Flat White', price: '6.45' } },
-    { id: 2, attributes: { name: 'Caffe Mocha', price: '6.45' } },
-    { id: 3, attributes: { name: 'Cappuccino', price: '5.95' } },
-    { id: 4, attributes: { name: 'Caffe Latte', price: '5.95' } },
+    { id: 1, attributes: { name: "Flat White", price: "6.45" } },
+    { id: 2, attributes: { name: "Caffe Mocha", price: "6.45" } },
+    { id: 3, attributes: { name: "Cappuccino", price: "5.95" } },
+    { id: 4, attributes: { name: "Caffe Latte", price: "5.95" } },
   ];
 
   return (
@@ -46,38 +57,34 @@ const handleDecrement =() => {
       </View>
       <View style={styles.orderBox}>
         <ScrollView style={styles.scroll}>
-        <View style={styles.item}>
+          <View style={styles.item}>
             <View style={styles.imgBox}>
-            <Image
-          source={require("@/assets/images/logo.png")} style={styles.productImg}
-        />
+              <AdvancedImage cldImg={img} style={styles.productImg} />
             </View>
-        <View style={styles.infoBox}>
-            <Text style={styles.productName}>adasdasdas</Text>
-            <Text style={styles.productQty}>asdas</Text>
-            <Text style={styles.productPrice}>ada</Text>
-            <Text style={styles.orderStatus}>sdasdasda</Text>
-        </View>
-        <View style={styles.orderLocationAndStatus}>
-          <Text style={styles.status}>Track</Text>
-        </View>
-        </View>
-        <View style={styles.item}>
+            <View style={styles.infoBox}>
+              <Text style={styles.productName}>adasdasdas</Text>
+              <Text style={styles.productQty}>asdas</Text>
+              <Text style={styles.productPrice}>ada</Text>
+              <Text style={styles.orderStatus}>sdasdasda</Text>
+            </View>
+            <View style={styles.orderLocationAndStatus}>
+              <Text style={styles.status}>Track</Text>
+            </View>
+          </View>
+          <View style={styles.item}>
             <View style={styles.imgBox}>
-            <Image
-          source={require("@/assets/images/logo.png")} style={styles.productImg}
-        />
+              <AdvancedImage cldImg={img} style={styles.productImg} />
             </View>
-        <View style={styles.infoBox}>
-            <Text style={styles.productName}>adasdasdas</Text>
-            <Text style={styles.productQty}>asdas</Text>
-            <Text style={styles.productPrice}>ada</Text>
-            <Text style={styles.orderStatus}>sdasdasda</Text>
-        </View>
-        <View style={styles.orderLocationAndStatus}>
-          <Text style={styles.status}>Track</Text>
-        </View>
-        </View>
+            <View style={styles.infoBox}>
+              <Text style={styles.productName}>adasdasdas</Text>
+              <Text style={styles.productQty}>asdas</Text>
+              <Text style={styles.productPrice}>ada</Text>
+              <Text style={styles.orderStatus}>sdasdasda</Text>
+            </View>
+            <View style={styles.orderLocationAndStatus}>
+              <Text style={styles.status}>Track</Text>
+            </View>
+          </View>
         </ScrollView>
       </View>
     </View>
@@ -85,99 +92,97 @@ const handleDecrement =() => {
 }
 
 const styles = StyleSheet.create({
-    imgBox: {
-        width: 100,
-        height: 100,
-        borderRadius: 10,
-        backgroundColor: '#CE9760',
-    },
-    status: {
-        color: 'white',
-        fontSize: 14,
-        fontWeight: "600"
-    },
-    orderLocationAndStatus: {
-        width: 100,
-        height: 30,
-        backgroundColor: '#CE9760',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 10,
-    },
-    orderStatus: {
-        color: "gray",
-        fontSize: 12,
-        fontWeight: "500",
-    },
-    productPrice: {
-        color: '#543A20',
-        fontSize: 20,
-        fontWeight: "600"
-    },
-    productQty: {
-        fontSize: 12,
-        fontWeight: "500",
-        color: 'gray'
-    },
-    productName: {
-        fontSize: 20,
-        fontWeight: "600",
-        color: '#543A20'
-    },
-    infoBox: {
-        width: '35%',
-        
-    },
-    scroll: {
-        width: "100%",
-        height: "auto",
-      },
-    item: {
-        width: "94%",
-        height: 'auto',
-        marginLeft: '3%',
-        display: "flex",
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexDirection: "row",
-        padding: 10,
-        borderColor: '#CE9760',
-        borderBottomWidth: 1
-    },
-    productImg: {
-        width: 100,
-        height: 100,
-    },
-    orderBox: {
-        width: "100%",
-        height: "86%",
-        position: "absolute",
-        bottom: 0,
-        justifyContent: "center",
-        alignItems: 'center',
-    },
-    headerText: {
-        color: "white",
-        fontSize: 25,
-        fontWeight: '700',
-        marginTop: "10%"
-    },
-    headerbox: {
-        width: '100%',
-        backgroundColor: "#543A20",
-        height: '14%',
-        justifyContent: "center",
-        alignItems: "center",
-        position: "absolute",
-        top: 0,
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20
-    },
- body: {
-  width: "100%",
-  height: "100%",
-  justifyContent: "center",
-  alignItems: "center",
- },
-
+  imgBox: {
+    width: 100,
+    height: 100,
+    borderRadius: 10,
+    backgroundColor: "#CE9760",
+  },
+  status: {
+    color: "white",
+    fontSize: 14,
+    fontWeight: "600",
+  },
+  orderLocationAndStatus: {
+    width: 100,
+    height: 30,
+    backgroundColor: "#CE9760",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+  },
+  orderStatus: {
+    color: "gray",
+    fontSize: 12,
+    fontWeight: "500",
+  },
+  productPrice: {
+    color: "#543A20",
+    fontSize: 20,
+    fontWeight: "600",
+  },
+  productQty: {
+    fontSize: 12,
+    fontWeight: "500",
+    color: "gray",
+  },
+  productName: {
+    fontSize: 20,
+    fontWeight: "600",
+    color: "#543A20",
+  },
+  infoBox: {
+    width: "35%",
+  },
+  scroll: {
+    width: "100%",
+    height: "auto",
+  },
+  item: {
+    width: "94%",
+    height: "auto",
+    marginLeft: "3%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "row",
+    padding: 10,
+    borderColor: "#CE9760",
+    borderBottomWidth: 1,
+  },
+  productImg: {
+    width: 100,
+    height: 100,
+  },
+  orderBox: {
+    width: "100%",
+    height: "86%",
+    position: "absolute",
+    bottom: 0,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  headerText: {
+    color: "white",
+    fontSize: 25,
+    fontWeight: "700",
+    marginTop: "10%",
+  },
+  headerbox: {
+    width: "100%",
+    backgroundColor: "#543A20",
+    height: "14%",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    top: 0,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+  },
+  body: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
