@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: 170,
     height: 110,
-    top: 250,
-    right: 135,
+    top: "30%",
+    right: "32%",
     opacity: 0.9,
   },
   buttonBox: {

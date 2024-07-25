@@ -27,10 +27,10 @@ export default function HomeScreen() {
     <View style={styles.body}>
       <StatusBar style="light" />
       <View style={styles.header}>
-        <Link href="./home">
+        <Link href="./profile">
           <Icon name="chevron-left" style={styles.backButton} />
         </Link>
-        <Text style={styles.speech}>Profile</Text>
+        <Text style={styles.speech}>Your Profile</Text>
         <Link href="./notification">
           <Icon name="bell" style={styles.headerIcon} />
         </Link>
@@ -40,55 +40,56 @@ export default function HomeScreen() {
           source={require("@/assets/images/starter.png")}
           style={styles.profile}
         />
-        <Text style={styles.username}>Shanzaib R.</Text>
+        <Text style={styles.username}>Bat-Od .E</Text>
+        <TouchableOpacity style={styles.editBox}>
+          <Icon name="pencil" style={styles.edit} />
+        </TouchableOpacity>
       </View>
-      <View style={styles.listBox}>
-        <TouchableOpacity style={styles.listItem}>
-          <Link href="./your_profile" style={styles.bt}>
-            <View style={styles.smallbox}>
-              <View style={styles.iconboxList}>
-                <Icon name="user" style={styles.tabBarIcon1} />
-              </View>
-              <Text style={styles.BoxName}>Your Profile</Text>
-            </View>
-          </Link>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.listItem}>
-          <Link href="./myOrder" style={styles.bt}>
-            <View style={styles.smallbox}>
-              <View style={styles.iconboxList}>
-                <Icon name="list" style={styles.tabBarIcon1} />
-              </View>
-              <Text style={styles.BoxName}>My Order</Text>
-            </View>
-          </Link>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.listItem}>
-          <Link href="./privacy" style={styles.bt}>
-            <View style={styles.smallbox}>
-              <View style={styles.iconboxList}>
-                <Icon name="lock" style={styles.tabBarIcon1} />
-              </View>
-              <Text style={styles.BoxName}>Privacy Policy</Text>
-            </View>
-          </Link>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.listItem}>
-          <View style={styles.smallbox}>
-            <View style={styles.iconboxList}>
-              <Icon name="user-plus" style={styles.tabBarIcon1} />
-            </View>
-            <Text style={styles.BoxName}>Invite Friend</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.listItem1}>
-          <View style={styles.smallbox}>
-            <View style={styles.iconboxList}>
-              <Icon1 name="log-out" style={styles.tabBarIcon1} />
-            </View>
-            <Text style={styles.BoxName}>Log Out</Text>
-          </View>
-        </TouchableOpacity>
+      <View style={styles.basicInfoBox}>
+        <Text style={styles.basicInfo}>Basic info</Text>
+        <View style={styles.InfoBox}>
+          <Text style={styles.infoName}>Name</Text>
+          <TextInput
+            placeholder="Bat-Od Enkhbat"
+            style={styles.input}
+            placeholderTextColor={"white"}
+          />
+        </View>
+        <View style={styles.InfoBox}>
+          <Text style={styles.infoName}>Birthday</Text>
+          <TextInput
+            placeholder="August 25, 2008"
+            style={styles.input}
+            placeholderTextColor={"white"}
+          />
+        </View>
+        <View style={styles.InfoBox}>
+          <Text style={styles.infoName}>Gender</Text>
+          <TextInput
+            placeholder="Male"
+            style={styles.input}
+            placeholderTextColor={"white"}
+          />
+        </View>
+      </View>
+      <View style={styles.contactInfoBox}>
+        <Text style={styles.basicInfo}>Contact info</Text>
+        <View style={styles.InfoBox}>
+          <Text style={styles.infoName}>Email</Text>
+          <TextInput
+            placeholder="Batod825@gmail.com"
+            style={styles.input}
+            placeholderTextColor={"white"}
+          />
+        </View>
+        <View style={styles.InfoBox}>
+          <Text style={styles.infoName}>Phone</Text>
+          <TextInput
+            placeholder="88592905"
+            style={styles.input}
+            placeholderTextColor={"white"}
+          />
+        </View>
       </View>
       <View style={styles.tabBar}>
         <TouchableOpacity>
@@ -125,6 +126,44 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  contactInfoBox: {
+    width: "90%",
+    height: "20%",
+    gap: 40,
+    position: "absolute",
+    bottom: "20%",
+  },
+  input: {
+    width: "80%",
+    height: "200%",
+    borderColor: "white",
+    borderWidth: 1,
+    borderRadius: 20,
+    padding: 3,
+    paddingHorizontal: 10,
+  },
+  infoName: {
+    color: "white",
+    fontSize: 15,
+  },
+  InfoBox: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    justifyContent: "space-between",
+  },
+  basicInfoBox: {
+    width: "90%",
+    height: "20%",
+    gap: 40,
+    position: "absolute",
+    top: "30%",
+  },
+  basicInfo: {
+    color: "white",
+    fontSize: 25,
+  },
   tab1: {
     width: 60,
     height: 60,

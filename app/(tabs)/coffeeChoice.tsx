@@ -57,7 +57,7 @@ export default function HomeScreen() {
       </View>
       <View style={styles.style}></View>
       <View style={styles.nameBox}>
-        <Text style={styles.name}>ingredients</Text>
+        <Text style={styles.name}>Ingredients</Text>
       </View>
       <Slider
         style={styles.slider}
@@ -66,7 +66,6 @@ export default function HomeScreen() {
         minimumTrackTintColor="#CE9760"
         maximumTrackTintColor="#CE9760"
         thumbTintColor="#CE9760"
-        thumbImage={require("@/assets/images/logo.png")}
       />
       <Text style={styles.headerTextForSize}>Coffee Size</Text>
       <View style={styles.sizeBox}>
@@ -122,7 +121,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold",
     position: "absolute",
-    bottom: "38%",
+    bottom: "43%",
   },
   size: {
     color: "#CE9760",
@@ -193,7 +192,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     position: "absolute",
-    bottom: "18%",
+    bottom: "23%",
   },
   text1: {
     color: "white",
@@ -220,7 +219,7 @@ const styles = StyleSheet.create({
     width: "27%",
     alignItems: "center",
     position: "absolute",
-    bottom: "12%",
+    bottom: "15%",
   },
   price: {
     color: "white",
@@ -245,7 +244,7 @@ const styles = StyleSheet.create({
     width: "90%",
     height: "10%",
     position: "absolute",
-    bottom: "0%",
+    bottom: "3%",
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
@@ -253,11 +252,11 @@ const styles = StyleSheet.create({
   },
   nameBox: {
     position: "absolute",
-    top: "37%",
+    top: "34%",
   },
   name: {
     color: "white",
-    fontSize: 25,
+    fontSize: 28,
     fontWeight: "bold",
   },
   headerText: {
