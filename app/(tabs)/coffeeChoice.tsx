@@ -68,6 +68,7 @@ export default function HomeScreen() {
       <View style={styles.nameBox}>
         <Text style={styles.name}>Ingredients</Text>
       </View>
+      <Text style={styles.milk}>Milk amount</Text>
       <Slider
         style={styles.slider}
         minimumValue={0}
@@ -117,11 +118,18 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  milk: {
+    color: "white",
+    fontSize: 25,
+    fontWeight: "bold",
+    position: "absolute",
+    top: "44%",
+  },
   slider: {
     width: "70%",
     height: 40,
     position: "absolute",
-    top: "45%",
+    top: "48%",
     flex: 1,
     alignSelf: "center",
   },

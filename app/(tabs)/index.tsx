@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "black",
     color: "white",
+    overflow: "hidden",
   },
   button: {
     width: 242,
