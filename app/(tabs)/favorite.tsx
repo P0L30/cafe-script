@@ -4,14 +4,11 @@ import { StatusBar } from "expo-status-bar";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {
   View,
-  Image,
   Text,
   StyleSheet,
   TouchableOpacity,
-  ScrollView,
   TextInput,
 } from "react-native";
-import { useFonts } from "expo-font";
 import React from "react";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { auto } from "@cloudinary/url-gen/actions/resize";
@@ -19,13 +16,6 @@ import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
 import { AdvancedImage } from "@cloudinary/react";
 
 export default function Favorite() {
-  const [fontsLoaded] = useFonts({
-    Playwrite: require("@/assets/fonts/Playwrite.ttf"),
-  });
-
-  if (!fontsLoaded) {
-    return null;
-  }
   const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
   const img = cld
     .image("latte")

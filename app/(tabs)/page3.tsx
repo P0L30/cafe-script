@@ -1,14 +1,7 @@
 "use client";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import {
-  View,
-  Image,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useFonts } from "expo-font";
 import React from "react";
 import { Cloudinary } from "@cloudinary/url-gen";

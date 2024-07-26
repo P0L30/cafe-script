@@ -7,8 +7,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
-  ScrollView,
-  Image,
 } from "react-native";
 import { useFonts } from "expo-font";
 import Icon from "react-native-vector-icons/FontAwesome";

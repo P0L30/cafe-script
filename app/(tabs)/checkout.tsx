@@ -5,7 +5,6 @@ import { StatusBar } from "expo-status-bar";
 import Icon from "react-native-vector-icons/EvilIcons";
 import {
   View,
-  Image,
   Text,
   StyleSheet,
   TouchableOpacity,
@@ -20,22 +19,6 @@ import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
 import { AdvancedImage } from "@cloudinary/react";
 
 export default function HomeScreen() {
-  const [count, setCount] = useState(0);
-  const handleIncrement = () => {
-    setCount(count + 1);
-  };
-  const handleDecrement = () => {
-    setCount(count - 1);
-  };
-
-  const [fontsLoaded] = useFonts({
-    Playwrite: require("@/assets/fonts/Playwrite.ttf"),
-  });
-
-  if (!fontsLoaded) {
-    return null;
-  }
-
   const cafeProductCardList = [
     { id: 1, attributes: { name: "Flat White", price: "6.45" } },
     { id: 2, attributes: { name: "Caffe Mocha", price: "6.45" } },

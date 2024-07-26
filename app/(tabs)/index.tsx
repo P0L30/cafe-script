@@ -2,13 +2,7 @@
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import Icon from "react-native-vector-icons/Fontisto";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useFonts } from "expo-font";
 import React from "react";
 import { Cloudinary } from "@cloudinary/url-gen";

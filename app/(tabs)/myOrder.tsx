@@ -2,17 +2,7 @@
 import { useState } from "react";
 import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import Icon from "react-native-vector-icons/FontAwesome";
-import {
-  View,
-  Image,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-  TextInput,
-} from "react-native";
-import { useFonts } from "expo-font";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import React from "react";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { auto } from "@cloudinary/url-gen/actions/resize";
@@ -20,35 +10,12 @@ import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
 import { AdvancedImage } from "@cloudinary/react";
 
 export default function HomeScreen() {
-  const [count, setCount] = useState(0);
-  const handleIncrement = () => {
-    setCount(count + 1);
-  };
-  const handleDecrement = () => {
-    setCount(count - 1);
-  };
-
-  const [fontsLoaded] = useFonts({
-    Playwrite: require("@/assets/fonts/Playwrite.ttf"),
-  });
-
-  if (!fontsLoaded) {
-    return null;
-  }
   const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
   const img = cld
     .image("latte")
     .format("auto")
     .quality("auto")
     .resize(auto().gravity(autoGravity()));
-
-  const cafeProductCardList = [
-    { id: 1, attributes: { name: "Flat White", price: "6.45" } },
-    { id: 2, attributes: { name: "Caffe Mocha", price: "6.45" } },
-    { id: 3, attributes: { name: "Cappuccino", price: "5.95" } },
-    { id: 4, attributes: { name: "Caffe Latte", price: "5.95" } },
-  ];
-
   return (
     <View style={styles.body}>
       <StatusBar style="light" />
