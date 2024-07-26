@@ -1,5 +1,3 @@
-"use client";
-import { Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import {
   View,
@@ -7,26 +5,61 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
-  ScrollView,
-  Image,
+  Alert,
 } from "react-native";
 import { useFonts } from "expo-font";
 import Icon from "react-native-vector-icons/FontAwesome";
-import React from "react";
+import React, { useState } from "react";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { auto } from "@cloudinary/url-gen/actions/resize";
 import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
 import { AdvancedImage } from "@cloudinary/react";
 import Icon1 from "react-native-vector-icons/Fontisto";
+import axios from "axios";
 
-export default function HomeScreen() {
+export default function RegisterScreen() {
   const [fontsLoaded] = useFonts({
     Playwrite: require("@/assets/fonts/Playwrite.ttf"),
   });
 
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleRegister = async () => {
+    if (password !== confirmPassword) {
+      Alert.alert("Error", "Passwords do not match");
+      return;
+    }
+
+    const userData = {
+      fullName,
+      email,
+      password,
+      avatar: "",
+      address: "",
+      paymentInfo: {},
+      favorites: [],
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/pages/api/register",
+        userData
+      );
+      Alert.alert("Success", "User registered successfully");
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : "An unknown error occurred";
+      Alert.alert("Error", errorMessage);
+    }
+  };
+
   if (!fontsLoaded) {
     return null;
   }
+
   const cld = new Cloudinary({ cloud: { cloudName: "dsfypbtbn" } });
   const img = cld
     .image("background5")
@@ -43,18 +76,38 @@ export default function HomeScreen() {
         <Text style={styles.name}>Register your Account</Text>
       </View>
       <View style={styles.inputbox}>
-        <TextInput style={styles.input} placeholder="Full Name" />
-        <TextInput placeholder="E-mail Address" style={styles.input} />
-        <TextInput placeholder="PassWord" style={styles.input} />
-        <TextInput placeholder="Confirm Password" style={styles.input} />
+        <TextInput
+          style={styles.input}
+          placeholder="Full Name"
+          value={fullName}
+          onChangeText={setFullName}
+        />
+        <TextInput
+          placeholder="E-mail Address"
+          style={styles.input}
+          value={email}
+          onChangeText={setEmail}
+        />
+        <TextInput
+          placeholder="Password"
+          style={styles.input}
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+        />
+        <TextInput
+          placeholder="Confirm Password"
+          style={styles.input}
+          secureTextEntry
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+        />
       </View>
       <View style={styles.buttonBox}>
-        <TouchableOpacity style={styles.button}>
-          <Link href="./home" style={styles.button1}>
-            <View style={styles.button1}>
-              <Text style={styles.buttonText}>Register</Text>
-            </View>
-          </Link>
+        <TouchableOpacity style={styles.button} onPress={handleRegister}>
+          <View style={styles.button1}>
+            <Text style={styles.buttonText}>Register</Text>
+          </View>
         </TouchableOpacity>
       </View>
       <View style={styles.Regbox}>
@@ -69,7 +122,7 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </View>
       <View style={styles.headerbox}>
-        <Text style={styles.header}>Or Registe With</Text>
+        <Text style={styles.header}>Or Register With</Text>
       </View>
       <View style={styles.headerbox1}></View>
     </View>
@@ -146,7 +199,6 @@ const styles = StyleSheet.create({
     top: 200,
   },
   name: {
-    // fontFamily: "Playwrite",
     color: "white",
     fontSize: 35,
     fontWeight: "500",
@@ -204,6 +256,3 @@ const styles = StyleSheet.create({
     opacity: 0.4,
   },
 });
-function UseSegment(): [any] {
-  throw new Error("Function not implemented.");
-}
